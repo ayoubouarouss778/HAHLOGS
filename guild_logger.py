@@ -35,6 +35,11 @@ def member_name(member):
         return None
 
     # Common Pika/API shapes
+        user = member.get("user")
+    if isinstance(user, dict):
+        username = user.get("username")
+        if isinstance(username, str) and username.strip():
+            return username.strip()
     for key in ("username", "name", "player", "ign"):
         value = member.get(key)
         if isinstance(value, str) and value.strip():
